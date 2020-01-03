@@ -29,6 +29,9 @@ func main(){
 	}
 	defer termbox.Close()
 
+	keyChan := make(chan keyEvent)
+	go keyEventLoop(keyChan)
+
 	gameData := new(typingGameData)
 	gameData.siteName = "Test0001"
 	gameData.siteUrl = "http://test0001.com"
@@ -42,6 +45,6 @@ func main(){
 	
 	gameData.stageList = append(gameData.stageList, stageData)
 
-	controlTypingGame(gameData)
+	controlTypingGame(gameData, keyChan)
 
 }
