@@ -194,7 +194,7 @@ func (stageStatus *typingStageStatus) update(inputChar rune) bool {
 			stageStatus.okCount += 1
 			stageStatus.typo = false
 			stageStatus.descPos += 1
-			if currentPos == len(stageStatus.data.desc) {
+			if currentPos == (len(stageStatus.data.desc) - 1) {
 				stageStatus.progress = "TYPED_ALL"
 				isCompleted = true
 			}
